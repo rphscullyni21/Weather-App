@@ -7,7 +7,7 @@ function getWeather() {
     return;
   }
 
-  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
 
   fetch(apiUrl)
     .then((response) => response.json())
@@ -17,7 +17,7 @@ function getWeather() {
       const description = data.weather[0].description;
 
       const resultElement = document.getElementById("result");
-      resultElement.innerHTML = `Weather in ${cityName}: ${temp}°C, ${description}`;
+      resultElement.innerHTML = `Weather in ${cityName}: ${temp}°F, ${description}`;
     })
     .catch((error) => {
       console.error("Error fetching data:", error);
